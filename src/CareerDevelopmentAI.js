@@ -4,11 +4,13 @@ import { profiles } from './data/profiles';
 import { profileSkills } from './data/skills';
 import { profileChatMessages } from './data/messages';
 import { getProfileResponse } from './data/responses';
+import EnhancedDashboard_Final from './components/EnhancedDashboard_Final_CLEANED';
 
 const CareerDevelopmentAI = () => {
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [chatMessages, setChatMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
+  const [conversationFinished, setConversationFinished] = useState(false);
 
   const handleSendMessage = () => {
     if (inputMessage.trim() === '' || !selectedProfile) return;
@@ -16,6 +18,15 @@ const CareerDevelopmentAI = () => {
     setTimeout(() => {
       const response = getProfileResponse(selectedProfile.id, inputMessage);
       setChatMessages(prev => [...prev, { sender: 'assistant', message: response }]);
+      
+      if (
+        inputMessage.toLowerCase().includes('ready') ||
+        inputMessage.toLowerCase().includes('start') ||
+        inputMessage.toLowerCase().includes('done') ||
+        inputMessage.toLowerCase().includes("let's go")
+      ) {
+        setConversationFinished(true);
+      }
     }, 1000);
     setInputMessage('');
   };
@@ -25,6 +36,10 @@ const CareerDevelopmentAI = () => {
       setChatMessages(profileChatMessages[selectedProfile.id]);
     }
   }, [selectedProfile]);
+
+  if (conversationFinished) {
+    return <EnhancedDashboard_Final />;
+  }
 
   if (!selectedProfile) {
     return (
