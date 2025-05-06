@@ -78,9 +78,9 @@ const InteractiveSolutionDesign = () => {
       } else if (inputMessage.toLowerCase().includes('visa') || inputMessage.toLowerCase().includes('permit')) {
         response = "Your current Student Visa (Stamp 2) is valid through December 2025. After graduation, you'll be eligible for the Third Level Graduate Scheme (Stamp 1G) for 2 years, allowing full-time work. Would you like more details about Critical Skills Employment Permits?";
       } else {
-        response = "I'm here to help with your journey in Ireland! I can assist with language practice, cultural activities, career planning, or connecting with other students. What specific area would you like to focus on today?";
+        response = "Let's start to build your personalized Dashboard!"
       }
-      
+
       setMessages(prevMessages => [...prevMessages, { sender: 'assistant', text: response }]);
     }, 1000);
   };

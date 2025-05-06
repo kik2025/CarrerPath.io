@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import Crysteldashboard from './components/Crysteldashboard'; // Importación única
 import CareerCompassDashboard from './components/CareerCompassDashboard'; // Importación única
+
+
 function App() {
   const [activeTab, setActiveTab] = useState('home');
 
   return (
     <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      <link rel="icon" type="image/png" href="../public/cases.png"></link>
         <h1 style={{ color: '#4F46E5', margin: 0 }}>Career Compass</h1>
         <div
           style={{
